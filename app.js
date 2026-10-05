@@ -343,7 +343,8 @@ const thai = {
   "quoteInvalid": "ตรวจสอบตัวเลข: สาขา 1–50 ที่นั่ง 2–30 และชุด Credit 0–50 ใช้จำนวนเต็ม ยอดขายต้องเป็นศูนย์หรือมากกว่า"
 };
 Object.assign(english,{"quoteInvalid":"Check your numbers: 1–50 branches, 2–30 seats, and 0–50 credit packs, using whole numbers. Online sales must be zero or more.","quoteBase": "Branch-adjusted plan", "quoteAdvancedLine": "Advanced CRM", "quotePosLine": "Meri PoS", "quoteStockLine": "Stock", "quoteCrewLine": "Crew", "quoteAppLine": "Branded app", "quoteDiscount": "Annual discount: 10%", "quoteCap": "Plan cap", "quoteAnnualPay": "Annual recurring payment", "quoteSetupFee": "One-time app setup", "quoteNoSetup": "No app setup charge", "quoteFixedFee": "Payment: 0.35%+ per bill, charged separately", "quoteGpFee": "Payment: 1.65%+ per bill, charged separately", "quoteEntrySwitch": "More than one branch: Growth has been selected automatically.", "quoteAnnualFixed": "Annual billing uses fixed pricing only. The payment model has been updated.", "quoteIncludedApp": "App included with Pro; no setup fee", "quoteAddonTotal": "Recurring add-ons", "quoteNoGuarantee": "This estimate is not a quotation.", "quoteSetupExcluded": "Setup is separate from the annual recurring total above"});
-Object.assign(english,{resumePartners:'Resume logos'});
+Object.assign(english,{resumePartners:'Resume logos',quoteGpEstimate:'At your entered online order value: {amount}/month. The plan charge is zero with no orders; selected add-ons still apply.'});
+Object.assign(thai,{quoteGpEstimate:'ตามยอดออเดอร์ออนไลน์ที่กรอก: {amount}/เดือน หากไม่มีออเดอร์ ค่าแพ็กเกจเป็นศูนย์ แต่ส่วนเสริมที่เลือกยังคิดค่าบริการ'});
 let lang='en';
 try {lang=localStorage.getItem('dotdash-language')==='th'?'th':'en';} catch {}
 const menu=document.querySelector('.menu');
@@ -383,8 +384,8 @@ function calculate(){
  for(const k of ['advanced','pos','app'])if(q[k])rows.push([phrase('quote'+k[0].toUpperCase()+k.slice(1)+'Line'),q[k]]);
  if(q.annual)rows.push([phrase('quoteDiscount'),-q.discount]);
  const box=document.getElementById('quote-breakdown');box.replaceChildren();for(const [name,value]of rows){const row=document.createElement('div'),label=document.createElement('span'),amount=document.createElement('strong');label.textContent=name;amount.textContent=money(value);row.append(label,amount);box.append(row)}
- document.getElementById('quote-total').textContent=money(q.total);
- document.getElementById('quote-annual').textContent=q.annual?phrase('quoteAnnualPay')+': '+money(q.total*12):'';
+ document.getElementById('quote-total').textContent=q.gp?money(q.addons)+'–'+money(q.base+q.addons):money(q.total);
+ document.getElementById('quote-annual').textContent=q.gp?phrase('quoteGpEstimate').replace('{amount}',money(q.total)):q.annual?phrase('quoteAnnualPay')+': '+money(q.total*12):'';
  document.getElementById('quote-setup').textContent=q.setup?phrase('quoteSetupFee')+': '+money(q.setup)+(q.annual?' · '+phrase('quoteSetupExcluded'):''):phrase('quoteNoSetup');
  document.getElementById('quote-payment').textContent=phrase(q.gp?'quoteGpFee':'quoteFixedFee');
  document.getElementById('quote-eligibility').textContent=notes.join(' ');

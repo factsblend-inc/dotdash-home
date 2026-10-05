@@ -81,3 +81,7 @@
 @media(max-width:800px){.hero-description,html[lang=th] .hero-description{font-size:1.1875rem;line-height:1.65}}
 
 .logo-window{aspect-ratio:795/215}.logo-window img{position:static;width:100%;height:auto;max-width:100%}.header .logo-window{mix-blend-mode:normal}
+
+/* Keep the main feature and pricing headings at the delivery heading scale. */
+:root{--feature-heading-size:clamp(1.8rem,2.7vw,2.5rem)}
+.delivery-copy h3,.relationship-copy h2,#ai-discovery-title,#pricing>.section-intro h2{font-size:var(--feature-heading-size)}
