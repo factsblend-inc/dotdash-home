@@ -1,0 +1,19 @@
+Tool mode: built-in image generation, edit/compositing.
+Brand source: https://soodsnoodle.com/
+Food photo: https://soodsnoodle.com/wp-content/uploads/2026/02/S__565551137_0-724x1024.jpg
+Logo: https://soodsnoodle.com/wp-content/uploads/2026/02/สีแดง.png
+Muse UI reference: https://ai.meta.com/muse/
+Prompt:
+Use case: compositing.
+Image 1 edit target: hand holding phone against plain softly blurred warm pavement and sunlight. Preserve that exact scene, plain background, hands, black sleeve, natural light and full-phone zoomed-out composition. No table, no food props, no bag, no plant. Square landing page image, background may extend to square, phone fully visible.
+Image 2 supporting insert: genuine SOOD's official chicken vermicelli menu photography. Use this actual photograph faithfully inside the phone's product card, preserving the white takeaway cup, shredded chicken, thin white noodles, lettuce, crispy pork topping, red backdrop and branded packaging. Do not replace it with invented shrimp noodles.
+Image 3 supporting insert: official red SOOD's serif logo. Use this logo faithfully in the product card.
+Replace only the phone screen with a refined Meta Muse-inspired mobile chat UI based on official reference: off-white canvas, centered small cream pebble Muse avatar with black eyes and title "Muse", small clean black sans-serif, right pale blue user bubble, white rounded assistant cards, bottom composer plus at left and pale blue arrow at right.
+Exact screen copy:
+User: "Find my lunch under THB 200."
+Assistant: "I found a meal you'll love."
+Product card: official food photo, small official red SOOD's logo, "Chicken vermicelli" and "THB 85".
+Confirmation: small check and "Ordered & paid".
+Compact route map and "Arriving in 25 min".
+Bottom composer: "Message Muse".
+Keep all text legible and compact. Currency must be literal THB, never ฿ or dollar sign. Restaurant branding remains its real deep red; chat interface pale blue and off-white. This is a future commerce concept mockup, not a screenshot of a live integration. No invented rating, no external caption, no watermark.

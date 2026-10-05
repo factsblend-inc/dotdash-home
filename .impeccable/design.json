@@ -1,0 +1,351 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-03T14:57:23.013656+00:00",
+  "title": "Design System: DotDash merchant web",
+  "extensions": {
+    "colorMeta": {
+      "blue": {
+        "role": "primary",
+        "displayName": "Electric Blue",
+        "canonical": "#2453f5",
+        "tonalRamp": [
+          "oklch(15% 0.2457 265.34)",
+          "oklch(26% 0.2457 265.34)",
+          "oklch(38% 0.2457 265.34)",
+          "oklch(49% 0.2457 265.34)",
+          "oklch(61% 0.2457 265.34)",
+          "oklch(72% 0.2457 265.34)",
+          "oklch(84% 0.2457 265.34)",
+          "oklch(95% 0.2457 265.34)"
+        ]
+      },
+      "blue-hover": {
+        "role": "primary",
+        "displayName": "Deep Action Blue",
+        "canonical": "#1640cc",
+        "tonalRamp": [
+          "oklch(15% 0.2192 264.87)",
+          "oklch(26% 0.2192 264.87)",
+          "oklch(38% 0.2192 264.87)",
+          "oklch(49% 0.2192 264.87)",
+          "oklch(61% 0.2192 264.87)",
+          "oklch(72% 0.2192 264.87)",
+          "oklch(84% 0.2192 264.87)",
+          "oklch(95% 0.2192 264.87)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Near-black Ink",
+        "canonical": "#171918",
+        "tonalRamp": [
+          "oklch(15% 0.0036 164.68)",
+          "oklch(26% 0.0036 164.68)",
+          "oklch(38% 0.0036 164.68)",
+          "oklch(49% 0.0036 164.68)",
+          "oklch(61% 0.0036 164.68)",
+          "oklch(72% 0.0036 164.68)",
+          "oklch(84% 0.0036 164.68)",
+          "oklch(95% 0.0036 164.68)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Supporting Gray",
+        "canonical": "#565b59",
+        "tonalRamp": [
+          "oklch(15% 0.0071 170.18)",
+          "oklch(26% 0.0071 170.18)",
+          "oklch(38% 0.0071 170.18)",
+          "oklch(49% 0.0071 170.18)",
+          "oklch(61% 0.0071 170.18)",
+          "oklch(72% 0.0071 170.18)",
+          "oklch(84% 0.0071 170.18)",
+          "oklch(95% 0.0071 170.18)"
+        ]
+      },
+      "yellow": {
+        "role": "secondary",
+        "displayName": "Citrus Yellow",
+        "canonical": "#f1f47a",
+        "tonalRamp": [
+          "oklch(15% 0.1450 110.16)",
+          "oklch(26% 0.1450 110.16)",
+          "oklch(38% 0.1450 110.16)",
+          "oklch(49% 0.1450 110.16)",
+          "oklch(61% 0.1450 110.16)",
+          "oklch(72% 0.1450 110.16)",
+          "oklch(84% 0.1450 110.16)",
+          "oklch(95% 0.1450 110.16)"
+        ]
+      },
+      "yellow-hover": {
+        "role": "secondary",
+        "displayName": "Pressed Citrus",
+        "canonical": "#e5e958",
+        "tonalRamp": [
+          "oklch(15% 0.1642 110.78)",
+          "oklch(26% 0.1642 110.78)",
+          "oklch(38% 0.1642 110.78)",
+          "oklch(49% 0.1642 110.78)",
+          "oklch(61% 0.1642 110.78)",
+          "oklch(72% 0.1642 110.78)",
+          "oklch(84% 0.1642 110.78)",
+          "oklch(95% 0.1642 110.78)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "White Paper",
+        "canonical": "#fff",
+        "tonalRamp": [
+          "oklch(15% 0.0000 89.88)",
+          "oklch(26% 0.0000 89.88)",
+          "oklch(38% 0.0000 89.88)",
+          "oklch(49% 0.0000 89.88)",
+          "oklch(61% 0.0000 89.88)",
+          "oklch(72% 0.0000 89.88)",
+          "oklch(84% 0.0000 89.88)",
+          "oklch(95% 0.0000 89.88)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Quiet Divider",
+        "canonical": "#dfe2df",
+        "tonalRamp": [
+          "oklch(15% 0.0052 145.53)",
+          "oklch(26% 0.0052 145.53)",
+          "oklch(38% 0.0052 145.53)",
+          "oklch(49% 0.0052 145.53)",
+          "oklch(61% 0.0052 145.53)",
+          "oklch(72% 0.0052 145.53)",
+          "oklch(84% 0.0052 145.53)",
+          "oklch(95% 0.0052 145.53)"
+        ]
+      },
+      "featured": {
+        "role": "neutral",
+        "displayName": "Featured Blue Wash",
+        "canonical": "#eef1ff",
+        "tonalRamp": [
+          "oklch(15% 0.0190 276.35)",
+          "oklch(26% 0.0190 276.35)",
+          "oklch(38% 0.0190 276.35)",
+          "oklch(49% 0.0190 276.35)",
+          "oklch(61% 0.0190 276.35)",
+          "oklch(72% 0.0190 276.35)",
+          "oklch(84% 0.0190 276.35)",
+          "oklch(95% 0.0190 276.35)"
+        ]
+      },
+      "outline-hover": {
+        "role": "neutral",
+        "displayName": "Outline Hover Wash",
+        "canonical": "#eef1fa",
+        "tonalRamp": [
+          "oklch(15% 0.0125 271.29)",
+          "oklch(26% 0.0125 271.29)",
+          "oklch(38% 0.0125 271.29)",
+          "oklch(49% 0.0125 271.29)",
+          "oklch(61% 0.0125 271.29)",
+          "oklch(72% 0.0125 271.29)",
+          "oklch(84% 0.0125 271.29)",
+          "oklch(95% 0.0125 271.29)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "English hero headings; responsive and Thai adjustments are documented in DESIGN.md."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Capability and launch headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Base reading typography."
+      },
+      "action": {
+        "displayName": "Action",
+        "purpose": "Primary action label."
+      },
+      "metadata": {
+        "displayName": "Metadata",
+        "purpose": "Captions, assumptions and compact interface annotations."
+      }
+    },
+    "shadows": [
+      {
+        "name": "action-hover",
+        "value": "0 6px 16px #0000001a",
+        "purpose": "Ambient button hover."
+      },
+      {
+        "name": "storefront-illustration",
+        "value": "0 16px 32px #17235612",
+        "purpose": "Layered storefront illustration."
+      },
+      {
+        "name": "customer-illustration",
+        "value": "0 12px 24px #27280b15",
+        "purpose": "Overlapping customer illustration."
+      }
+    ],
+    "motion": [
+      {
+        "name": "button-state",
+        "value": "background .2s,box-shadow .2s",
+        "purpose": "Shipped button transitions; removed for reduced motion."
+      },
+      {
+        "name": "hero-arrive",
+        "value": ".7s cubic-bezier(.16,1,.3,1)",
+        "purpose": "Product illustration clip and blur reveal; removed for reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "1450px"
+      },
+      {
+        "name": "compact-desktop",
+        "value": "1100px"
+      },
+      {
+        "name": "stack",
+        "value": "800px"
+      },
+      {
+        "name": "small-mobile",
+        "value": "520px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "description": "Shipped primary action variant.",
+      "html": "<button class=\"ds-button-primary\">Book a demo</button>",
+      "css": ".ds-button-primary{display:inline-flex;justify-content:center;align-items:center;border:1px solid var(--blue,#2453f5);border-radius:8px;min-height:56px;padding:15px 27px;font-weight:700;font-size:.95rem;font-family:var(--font,'Manrope','Noto Sans Thai',sans-serif);line-height:1.6;cursor:pointer;transition:background .2s,box-shadow .2s;background:var(--blue,#2453f5);color:var(--paper,#fff);border-color:var(--blue,#2453f5)}.ds-button-primary:hover{background:#1640cc;border-color:#1640cc;box-shadow:0 6px 16px #0000001a}.ds-button-primary:focus-visible{outline:3px solid var(--blue,#2453f5);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-button-primary{transition:none}}",
+      "refersTo": "button-primary"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "description": "Shipped outline action variant.",
+      "html": "<button class=\"ds-button-outline\">Book a demo</button>",
+      "css": ".ds-button-outline{display:inline-flex;justify-content:center;align-items:center;border:1px solid var(--blue,#2453f5);border-radius:8px;min-height:56px;padding:15px 27px;font-weight:700;font-size:.95rem;font-family:var(--font,'Manrope','Noto Sans Thai',sans-serif);line-height:1.6;cursor:pointer;transition:background .2s,box-shadow .2s;background:transparent;color:var(--ink,#171918);border-color:#c7cbc7}.ds-button-outline:hover{background:#eef1fa;border-color:var(--blue,#2453f5);color:var(--blue,#2453f5);box-shadow:0 6px 16px #0000001a}.ds-button-outline:focus-visible{outline:3px solid var(--blue,#2453f5);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-button-outline{transition:none}}",
+      "refersTo": "button-outline"
+    },
+    {
+      "name": "Light Button",
+      "kind": "button",
+      "description": "Shipped light action variant.",
+      "html": "<button class=\"ds-button-light\">Book a demo</button>",
+      "css": ".ds-button-light{display:inline-flex;justify-content:center;align-items:center;border:1px solid var(--blue,#2453f5);border-radius:8px;min-height:56px;padding:15px 27px;font-weight:700;font-size:.95rem;font-family:var(--font,'Manrope','Noto Sans Thai',sans-serif);line-height:1.6;cursor:pointer;transition:background .2s,box-shadow .2s;background:var(--yellow,#f1f47a);color:var(--ink,#171918);border-color:var(--yellow,#f1f47a)}.ds-button-light:hover{background:#e5e958;box-shadow:0 6px 16px #0000001a}.ds-button-light:focus-visible{outline:3px solid var(--blue,#2453f5);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-button-light{transition:none}}",
+      "refersTo": "button-light"
+    },
+    {
+      "name": "Dark Button",
+      "kind": "button",
+      "description": "Shipped dark action variant.",
+      "html": "<button class=\"ds-button-dark\">Book a demo</button>",
+      "css": ".ds-button-dark{display:inline-flex;justify-content:center;align-items:center;border:1px solid var(--blue,#2453f5);border-radius:8px;min-height:56px;padding:15px 27px;font-weight:700;font-size:.95rem;font-family:var(--font,'Manrope','Noto Sans Thai',sans-serif);line-height:1.6;cursor:pointer;transition:background .2s,box-shadow .2s;background:var(--ink,#171918);color:var(--paper,#fff);border-color:var(--ink,#171918)}.ds-button-dark:hover{background:#303630;box-shadow:0 6px 16px #0000001a}.ds-button-dark:focus-visible{outline:3px solid var(--blue,#2453f5);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-button-dark{transition:none}}",
+      "refersTo": "button-dark"
+    },
+    {
+      "name": "Small Button",
+      "kind": "button",
+      "description": "Compact desktop header action.",
+      "html": "<button class=\"ds-button-small\">Book a demo</button>",
+      "css": ".ds-button-small{display:inline-flex;justify-content:center;align-items:center;border:1px solid var(--blue,#2453f5);border-radius:8px;min-height:56px;padding:15px 27px;font-weight:700;font-size:.95rem;font-family:var(--font,'Manrope','Noto Sans Thai',sans-serif);line-height:1.6;cursor:pointer;transition:background .2s,box-shadow .2s;min-height:44px;padding:10px 20px;font-size:.85rem;background:var(--blue,#2453f5);color:var(--paper,#fff)}.ds-button-small:hover{background:#1640cc;border-color:#1640cc;box-shadow:0 6px 16px #0000001a}.ds-button-small:focus-visible{outline:3px solid var(--blue,#2453f5);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-button-small{transition:none}}",
+      "refersTo": "button-small"
+    },
+    {
+      "name": "Contact Field",
+      "kind": "input",
+      "description": "Native inquiry field with visible label and keyboard focus.",
+      "html": "<label class=\"ds-label\" for=\"ds-email\">Contact email</label><input class=\"ds-input\" id=\"ds-email\" type=\"email\" autocomplete=\"email\">",
+      "css": ".ds-label{display:block;font-size:.85rem;font-weight:700;font-family:var(--font,'Manrope','Noto Sans Thai',sans-serif);line-height:1.6;color:var(--ink,#171918)}.ds-input{width:100%;border:1px solid #b7beb7;padding:10px 12px;border-radius:5px;margin-top:5px;font-family:var(--font,'Manrope','Noto Sans Thai',sans-serif);line-height:1.6;font-size:1rem;background:var(--paper,#fff);color:var(--ink,#171918)}.ds-input:focus-visible{outline:3px solid var(--blue,#2453f5);outline-offset:5px}",
+      "refersTo": "input"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "Desktop navigation link primitive; responsive menu behavior remains in the build.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"#platform\">The platform</a><a href=\"#pricing\">Pricing</a><a href=\"#launch\">Your launch</a></nav>",
+      "css": ".ds-nav{display:flex;gap:28px;font-family:var(--font,'Manrope','Noto Sans Thai',sans-serif);line-height:1.6;font-size:.9rem;font-weight:600;background:var(--paper,#fff)}.ds-nav a{color:var(--ink,#171918);text-decoration:none}.ds-nav a:hover{color:var(--blue,#2453f5)}.ds-nav a:focus-visible{outline:3px solid var(--blue,#2453f5);outline-offset:5px}"
+    },
+    {
+      "name": "Channel Tag",
+      "kind": "chip",
+      "description": "Informational channel label; no invented selection state.",
+      "html": "<span class=\"ds-tag\">LINE OA</span>",
+      "css": ".ds-tag{display:inline-block;font-family:var(--font,'Manrope','Noto Sans Thai',sans-serif);line-height:1.6;font-size:.8rem;padding:6px 12px;border:1px solid var(--line,#dfe2df);border-radius:5px;white-space:nowrap;color:var(--ink,#171918)}",
+      "refersTo": "channel-tag"
+    },
+    {
+      "name": "Featured Plan",
+      "kind": "card",
+      "description": "Excerpt of the highlighted joined plan panel; no unsupported card elevation.",
+      "html": "<article class=\"ds-plan\"><h3>Growth</h3><p>For growing restaurant brands.</p><strong>\u0e3f3,200<span>/month</span></strong></article>",
+      "css": ".ds-plan{padding:32px;font-family:var(--font,'Manrope','Noto Sans Thai',sans-serif);line-height:1.6;color:var(--ink,#171918);background:#eef1ff}.ds-plan h3{margin:0;font-size:1.5rem;font-weight:800;line-height:1.13;letter-spacing:-.025em}.ds-plan p{font-size:.85rem;color:var(--muted,#565b59);margin:12px 0 0}.ds-plan strong{display:block;font-size:2.7rem;font-weight:800;letter-spacing:-.04em;margin-top:18px;line-height:1.1;font-variant-numeric:tabular-nums}.ds-plan strong span{font-size:.8rem;font-weight:500;letter-spacing:0;margin-left:5px;color:var(--muted,#565b59)}",
+      "refersTo": "featured-plan"
+    },
+    {
+      "name": "FAQ Disclosure",
+      "kind": "custom",
+      "description": "Native expanding answer with the shipped rule and plus/minus affordance.",
+      "html": "<details class=\"ds-faq\"><summary>Can I keep using marketplaces?</summary><p>Keep marketplaces for discovery. Build relationships on your own channel.</p></details>",
+      "css": ".ds-faq{border-top:1px solid var(--line,#dfe2df);padding:22px 0;font-family:var(--font,'Manrope','Noto Sans Thai',sans-serif);line-height:1.6;color:var(--ink,#171918)}.ds-faq summary{cursor:pointer;list-style:none;position:relative;padding-right:32px;line-height:1.5;font-size:1rem;font-weight:700}.ds-faq summary::-webkit-details-marker{display:none}.ds-faq summary:after{content:\"+\";position:absolute;right:5px;top:0;font-size:1.35rem;line-height:1.2;font-weight:400}.ds-faq[open] summary:after{content:\"\u2212\"}.ds-faq summary:focus-visible{outline:3px solid var(--blue,#2453f5);outline-offset:5px}.ds-faq p{font-size:.9rem;margin:16px 0 0;max-width:70ch;color:var(--muted,#565b59)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Contemporary restaurant brand operations",
+    "overview": "A clean, confident, product-led system makes merchant ownership tangible. White space and near-black Manrope typography carry the sales message; electric blue supplies actions and selected states; citrus yellow makes customer relationships feel visible and approachable.\n\nReal restaurant photography sits inside clearly labeled illustrative product views. Rounded interface panels, restrained borders and selective ambient shadows give the product enough substance to inspect without turning the entire page into floating cards. English and Thai share a single visual identity with explicit Thai typography adjustments.",
+    "keyCharacteristics": [
+      "Bold balanced headings and quiet supporting text.",
+      "Blue actions, yellow relationship surfaces and generous white intervals.",
+      "Real food photography with honest mockup captions.",
+      "Flat information surfaces with soft depth for product illustrations."
+    ],
+    "rules": [
+      {
+        "name": "The Action and Relationship Rule",
+        "body": "Blue signals action or selection; yellow carries customer relationship emphasis. Both can form full-width bands where the shipped surface uses them.",
+        "section": "colors"
+      },
+      {
+        "name": "The Thai Breathing Room Rule",
+        "body": "Thai h1 uses `clamp(2.5rem,4.1vw,4rem)`, 1.35 leading and -.02em tracking; Thai h2 also uses 1.35 leading and -.02em tracking. Below 800px Thai h1 uses `clamp(2.25rem,6.7vw,3.8rem)`.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Information Rule",
+        "body": "Pricing, capabilities and FAQ depend on rules and tonal surfaces; illustration shadows communicate layering rather than becoming the default card style.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use blue for action and selection, and yellow for relationship emphasis.",
+      "Do preserve Thai breathing room and the visible language switch.",
+      "Do keep metadata at the shipped .75rem minimum and maintain explicit assumptions.",
+      "Do retain photograph provenance and label illustrative product views.",
+      "Do use ambient depth for layered product views and dividers for information."
+    ],
+    "donts": [
+      "Don't turn the illustrative customer data into testimonial or performance evidence.",
+      "Don't remove focus outlines or reduced-motion behavior.",
+      "Don't promote one-off illustration colors into new global brand accents."
+    ]
+  }
+}

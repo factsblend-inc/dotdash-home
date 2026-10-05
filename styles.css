@@ -79,3 +79,5 @@
 .hero-description,html[lang=th] .hero-description{font-size:1.375rem;line-height:1.65;max-width:510px}
 .hero-hook{color:var(--ink);font-weight:800;background:linear-gradient(transparent 55%,rgba(253,216,60,.55) 55%,rgba(253,216,60,.55) 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
 @media(max-width:800px){.hero-description,html[lang=th] .hero-description{font-size:1.1875rem;line-height:1.65}}
+
+.logo-window{aspect-ratio:795/215}.logo-window img{position:static;width:100%;height:auto;max-width:100%}.header .logo-window{mix-blend-mode:normal}
