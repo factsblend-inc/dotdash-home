@@ -365,20 +365,22 @@ function computeQuote(o){
 }
 function phrase(k){return (lang==='th'?thai:english)[k]||k}
 function calculate(){
- const form=document.getElementById('plan-builder');if(!form)return;
- const get=id=>document.getElementById('quote-'+id), notes=[];
+ const form=document.getElementById('plan-builder');if(!form)return;updateLocationStepper();
+ const get=id=>['plan','billing'].includes(id)?form.querySelector('input[name="quote-'+id+'"]:checked'):document.getElementById('quote-'+id), notes=[];
  const numeric=[get('branches')];if(get('advanced').checked)numeric.push(get('seats'),get('credits'));if(get('mode').value==='gp'&&get('billing').value!=='annual')numeric.push(get('gmv'));
- const invalid=numeric.some(input=>input.value===''||!input.checkValidity());
- numeric.forEach(input=>input.setAttribute('aria-invalid',String(input.value===''||!input.checkValidity())));
+ const gmvRaw=get('gmv').value.replaceAll(',','');
+ const validNumber=input=>input.id==='quote-gmv'?/^\d+(?:\.\d{1,2})?$/.test(gmvRaw)&&Number(gmvRaw)<=100000000:input.value!==''&&input.checkValidity();
+ const invalid=numeric.some(input=>!validNumber(input));
+ numeric.forEach(input=>input.setAttribute('aria-invalid',String(!validNumber(input))));
  if(invalid){document.getElementById('quote-total').textContent='—';document.getElementById('quote-breakdown').replaceChildren();for(const id of ['quote-annual','quote-setup','quote-payment'])document.getElementById(id).textContent='';document.getElementById('quote-eligibility').textContent=phrase('quoteInvalid');return}
- if(get('plan').value==='entry'&&Number(get('branches').value)>1){get('plan').value='growth';notes.push(phrase('quoteEntrySwitch'))}
+ if(get('plan').value==='entry'&&Number(get('branches').value)>1){document.getElementById('quote-plan-growth').checked=true;notes.push(phrase('quoteEntrySwitch'))}
  const annual=get('billing').value==='annual';get('mode').querySelector('[value=gp]').disabled=annual;
  if(annual&&get('mode').value==='gp'){get('mode').value='fixed';notes.push(phrase('quoteAnnualFixed'))}
  const pro=get('plan').value==='pro',pos=get('pos').checked;
  if(pro)get('app').checked=true;get('app').disabled=pro;
  document.getElementById('quote-advanced-options').hidden=!get('advanced').checked;
  document.getElementById('quote-gmv-row').hidden=get('mode').value!=='gp';
- const q=computeQuote({plan:get('plan').value,branches:get('branches').value,billing:get('billing').value,mode:get('mode').value,advanced:get('advanced').checked,seats:get('seats').value,credits:get('credits').value,pos,app:get('app').checked,gmv:get('gmv').value});
+ const q=computeQuote({plan:get('plan').value,branches:get('branches').value,billing:get('billing').value,mode:get('mode').value,advanced:get('advanced').checked,seats:get('seats').value,credits:get('credits').value,pos,app:get('app').checked,gmv:gmvRaw});
  const rows=[[phrase('quoteBase'),q.planCharge]];
  if(q.gp)rows.push([phrase('quoteCap'),q.base]);
  for(const k of ['advanced','pos','app'])if(q[k])rows.push([phrase('quote'+k[0].toUpperCase()+k.slice(1)+'Line'),q[k]]);
@@ -390,6 +392,29 @@ function calculate(){
  document.getElementById('quote-payment').textContent=phrase(q.gp?'quoteGpFee':'quoteFixedFee');
  document.getElementById('quote-eligibility').textContent=notes.join(' ');
 }
+function updateLocationStepper(){
+ const input=document.getElementById('quote-branches'),value=Number(input.value);
+ const minus=document.getElementById('quote-branches-minus'),plus=document.getElementById('quote-branches-plus');
+ minus.disabled=value<=Number(input.min);plus.disabled=value>=Number(input.max);
+ minus.setAttribute('aria-label',lang==='th'?'ลดหนึ่งสาขา':'Remove one location');
+ plus.setAttribute('aria-label',lang==='th'?'เพิ่มหนึ่งสาขา':'Add one location');
+}
+for(const [direction,delta] of [['minus',-1],['plus',1]])document.getElementById('quote-branches-'+direction).addEventListener('click',()=>{
+ const input=document.getElementById('quote-branches');
+ input.value=String(Math.max(Number(input.min),Math.min(Number(input.max),(Number(input.value)||1)+delta)));
+ input.dispatchEvent(new Event('input',{bubbles:true}));
+});
+document.getElementById('quote-gmv').addEventListener('input',e=>{
+ const input=e.currentTarget,raw=input.value.replaceAll(',','');
+ if(!/^\d*(?:\.\d{0,2})?$/.test(raw))return;
+ const before=input.value.slice(0,input.selectionStart).replaceAll(',','').length;
+ const [whole,decimal]=raw.split('.');
+ const grouped=whole.replace(/\B(?=(\d{3})+(?!\d))/g,',')+(decimal===undefined?'':'.'+decimal);
+ input.value=grouped;
+ let cursor=0,unformatted=0;
+ while(cursor<grouped.length&&unformatted<before){if(grouped[cursor]!==',')unformatted++;cursor++}
+ input.setSelectionRange(cursor,cursor);
+});
 document.getElementById('plan-builder').addEventListener('input',calculate);
 document.getElementById('plan-builder').addEventListener('submit',e=>e.preventDefault());
 function translate(){document.documentElement.lang=lang;const copy=lang==='th'?thai:english;document.querySelectorAll('[data-i18n]').forEach(el=>{if(copy[el.dataset.i18n]!==undefined)el.innerHTML=copy[el.dataset.i18n]});document.querySelector('#language').innerHTML=lang==='en'?'<span class="active-language">EN</span><span aria-hidden="true">/</span><span>ไทย</span>':'<span>EN</span><span aria-hidden="true">/</span><span class="active-language">ไทย</span>';document.querySelector('#language').setAttribute('aria-label',lang==='en'?'Switch to Thai':'Switch to English');document.querySelector('nav').setAttribute('aria-label',lang==='th'?'เมนูหลัก':'Main navigation');menu.setAttribute('aria-label',lang==='th'?'เปิดเมนู':'Open menu');document.querySelector('.ordering-reference-image').alt=lang==='th'?'ลูกค้าถือโทรศัพท์ที่แสดงหน้าสั่งอาหารและสะสมแต้มของ SOOD’s บน DotDash':'A customer holding a phone with the SOOD’s DotDash ordering and rewards screen';document.title=lang==='th'?'DotDash แบรนด์ของคุณ ลูกค้าของคุณ กลับมาสั่งซ้ำมากขึ้น':'DotDash Your brand. Your customers. More repeat orders.';calculate()}

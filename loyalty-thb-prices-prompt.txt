@@ -1,0 +1,2 @@
+Mode: built-in image editor.
+Use case: text-localization. Edit target: supplied loyalty card photograph. Change ONLY the price text on the front Chicken Ravioli card from 'THB 13.00' to 'THB 350', and the price text on the rear lower card from 'THB 8.00' to 'THB 240'. Render exact text without decimal suffixes. Preserve each text's original font size, weight, color, placement and perspective. Keep all other text, hearts and counts, blue stars and points, food photos, menu card geometry, tabletop, background, lighting and framing unchanged. No crop, no redesign.
