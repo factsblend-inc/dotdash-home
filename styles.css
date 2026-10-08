@@ -89,3 +89,70 @@
 /* Direct plan choices and a compact location stepper. */
 .calculator .quote-choice-group{margin:0}.calculator .quote-choice-group legend{font-size:.8rem;font-weight:700;margin-bottom:8px}.quote-choices{display:flex;flex-wrap:wrap;gap:8px}.calculator .quote-choice{display:flex;align-items:center;gap:8px;flex:1;padding:11px 12px;border:1px solid #c6cdc7;border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer;line-height:1.4;min-height:46px}.quote-choice input{margin:0;width:17px;height:17px;accent-color:var(--blue);flex:none}.quote-choice:has(input:checked){background:var(--primary-soft);border-color:var(--blue);color:var(--primary-hover)}.quote-choice:has(input:focus-visible){outline:3px solid var(--blue);outline-offset:3px}.location-stepper{display:flex;align-items:center;gap:4px;background:#f0f2f4;border-radius:40px;padding:5px;width:184px;max-width:100%;margin-top:8px}.location-stepper button{width:44px;height:44px;flex:none;border:0;border-radius:50%;background:white;color:var(--ink);font-size:26px;line-height:1;box-shadow:0 1px 3px #0000000d}.location-stepper button:disabled{background:transparent;box-shadow:none;color:#a5aaa8;cursor:default}.calculator .location-stepper input{width:72px;min-width:0;margin:0;padding:0;border:0;border-radius:0;background:transparent;text-align:center;font-size:1.25rem;font-weight:800;min-height:44px;-moz-appearance:textfield;appearance:textfield}.location-stepper input::-webkit-inner-spin-button,.location-stepper input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.calculator .calc-inputs>.quote-choice-group{grid-column:1/-1}
 .calculator .calc-inputs>div:has(.location-stepper){grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:16px}.calculator .calc-inputs>div:has(.location-stepper) .location-stepper{margin-top:0}.calculator .calc-inputs>div:has(#quote-mode){grid-column:1/-1}
+
+
+/* Version 2 review: Marketplace concept. */
+.marketplace-section{border-bottom:1px solid var(--line);padding-top:80px;padding-bottom:64px}
+.marketplace-layout{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+.marketplace-eyebrow{display:flex;align-items:center;gap:14px;color:var(--blue);font-size:14px;font-weight:800;margin-bottom:24px}
+.marketplace-status{font-size:12px;line-height:1;padding:9px 12px;border-radius:30px;background:var(--primary-soft);color:var(--blue)}
+.marketplace-copy h2{font-size:var(--feature-heading-size);margin-bottom:24px}
+.marketplace-description{font-size:18px;line-height:1.7;color:var(--muted);max-width:520px}
+.marketplace-image-reference{margin:0;border-radius:16px;overflow:hidden;background:none;padding:0}
+.marketplace-image-reference img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain}
+.marketplace-principles{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;border-top:1px solid var(--line);padding-top:30px;margin-top:48px}
+.marketplace-rule{display:block;font-size:12px;color:var(--blue);font-weight:800;margin-bottom:12px}
+.marketplace-principles h3{font-size:17px;line-height:1.4;margin-bottom:10px}
+.marketplace-principles p{font-size:14px;line-height:1.7;color:var(--muted)}
+@media(max-width:1000px){.marketplace-layout{gap:36px}}
+@media(max-width:800px){.marketplace-section{padding-top:60px;padding-bottom:40px}.marketplace-layout{grid-template-columns:1fr;gap:32px}.marketplace-description{max-width:100%;font-size:16px}.marketplace-principles{grid-template-columns:1fr;gap:24px;margin-top:32px}}
+
+.marketplace-description strong{font-weight:700;color:var(--ink);background:linear-gradient(transparent 55%,rgba(36,87,214,.22) 55%,rgba(36,87,214,.22) 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+
+.marketplace-image-reference figcaption{font-size:12px;line-height:1.5;color:var(--muted);padding-top:10px}
+
+.marketplace-image-reference img{border-radius:16px}
+
+.network-channels{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
+.network-channel{display:flex;align-items:flex-start;gap:14px}
+.network-channel>img{display:block;flex:0 0 44px;width:44px;height:44px;object-fit:contain}
+.network-channel h3{font-size:16px;line-height:1.4;margin:0 0 5px;font-weight:700}
+.network-channel p{margin:0;font-size:13px;line-height:1.6}
+.channel-status{color:var(--muted)}
+.network-channel .channel-live{color:#008d3c;font-weight:600}
+.channel-detail{color:var(--muted);margin-top:3px!important}
+.network-both{font-size:14px;line-height:1.7;color:var(--muted);margin-top:22px;max-width:500px}
+@media(max-width:520px){.network-channels{grid-template-columns:1fr;gap:22px}.network-both{margin-top:20px}}
+
+.network-channel h3 a{color:inherit;text-decoration:none}
+.network-channel h3 a:hover{text-decoration:underline;text-underline-offset:4px}
+.network-channel h3 a:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+
+.enterprise-price{font-size:30px;line-height:1.3}
+.marketplace-rate-details{margin-top:40px;padding-top:30px;border-top:1px solid var(--line)}
+.marketplace-rate-details h3{font-size:20px;margin-bottom:10px}
+.marketplace-rate-details p{font-size:15px;line-height:1.7;color:var(--muted)}
+.marketplace-rate-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:24px 0}
+.marketplace-rate-grid>div{display:flex;flex-direction:column;gap:8px}
+.marketplace-rate-grid strong{font-size:24px;color:var(--blue)}
+.marketplace-full-terms{border-top:1px solid var(--line);padding:20px 0}
+.marketplace-full-terms summary{font-weight:700;cursor:pointer}
+.marketplace-full-terms p{max-width:900px;margin-top:16px}
+@media(max-width:600px){.marketplace-rate-grid{grid-template-columns:1fr}.enterprise-price{font-size:26px}}
+
+.calculator #quote-gmv{display:block;width:100%;padding:10px 12px;border:1px solid #c6cdc7;background:#fff;border-radius:5px;font-size:.9rem;margin-top:8px;min-height:44px}
+
+.feature-sign{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;vertical-align:middle}
+.feature-sign svg{width:21px;height:21px;stroke-width:2.4}
+.feature-yes{color:var(--ink)}
+.feature-no{color:#929995;font-size:21px;line-height:1}
+
+.quote-plan-label{display:flex;flex-direction:column;gap:3px}
+.quote-plan-label small{font-size:11px;font-weight:500;line-height:1.4;color:var(--muted)}
+.calculator .quote-choice:has(input:disabled){background:#f3f4f3;border-color:#e0e3e1;color:#969c98;cursor:not-allowed}
+.quote-choice:has(input:disabled) .quote-plan-label small{color:#858d87}
+.quote-choice input:disabled{cursor:not-allowed;opacity:.45}
+
+/* Tighter transition from Network to AI discovery. */
+#ai-discovery{padding-top:56px}
+@media(max-width:800px){#ai-discovery{padding-top:36px}}
