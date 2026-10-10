@@ -391,13 +391,13 @@ function calculate(){
  const pos=get('pos').checked;
  document.getElementById('quote-advanced-options').hidden=!get('advanced').checked;
  document.getElementById('quote-gmv-row').hidden=get('mode').value!=='gp';
- const q=computeQuote({plan:get('plan').value,branches:get('branches').value,billing:get('billing').value,mode:get('mode').value,advanced:get('advanced').checked,seats:get('seats').value,credits:get('credits').value,pos,app:get('app').checked,gmv:gmvRaw,launch:document.getElementById('quote-launch').checked});
+ const q=computeQuote({plan:get('plan').value,branches:get('branches').value,billing:get('billing').value,mode:get('mode').value,advanced:get('advanced').checked,seats:get('seats').value,credits:get('credits').value,pos,app:get('app').checked,gmv:gmvRaw,launch:true});
  const rows=[[phrase('quoteBase'),q.planCharge]];
  if(q.gp)rows.push([phrase('quoteCap'),q.base]);
  for(const k of ['advanced','pos','app'])if(q[k])rows.push([phrase('quote'+k[0].toUpperCase()+k.slice(1)+'Line'),q[k]]);
  if(q.launch)rows.push([phrase('quoteLaunchDiscount'),-q.partnerDiscount]);
  if(q.annual&&q.annualDiscount)rows.push([phrase('quoteDiscount'),-q.annualDiscount]);
- if(document.getElementById('quote-launch').checked&&q.gp)notes.push(phrase('quoteLaunchUsage'));
+ if(q.gp)notes.push(phrase('quoteLaunchUsage'));
  const box=document.getElementById('quote-breakdown');box.replaceChildren();for(const [name,value]of rows){const row=document.createElement('div'),label=document.createElement('span'),amount=document.createElement('strong');label.textContent=name;amount.textContent=money(value);row.append(label,amount);box.append(row)}
  document.getElementById('quote-total').textContent=q.gp?money(q.addons)+'–'+money(q.base+q.addons):money(q.total);
  document.getElementById('quote-annual').textContent=q.gp?phrase('quoteGpEstimate').replace('{amount}',money(q.total)):q.annual?phrase('quoteAnnualPay')+': '+money(q.total*12):'';
@@ -456,7 +456,7 @@ Object.assign(english,{
  launchBody:'Join our first 100 Bangkok partners and share honest feedback and your experience using DotDash. Your plan subscription stays 50% off for as long as you remain subscribed.',
  launchTerms:'Fixed subscriptions only. Add-ons, setup, payment, delivery, and Marketplace fees are separate. The plan offer replaces the 10% annual plan discount. Eligibility is confirmed by our team; this page does not reserve a place.',
  launchCta:'Apply to become a launch partner',regularPrice:'regular /month',launchPriceLabel:'Eligible Bangkok launch partners',enterpriseLaunch:'50% off the quoted plan subscription',
- quoteLaunch:'Show 50% Bangkok launch-partner pricing',quoteLaunchNote:'For the first 100 approved Bangkok partners, while subscribed. Fixed plan subscription only; fees and add-ons are separate.',quoteLaunchDiscount:'Bangkok launch offer: 50% off plan',quoteLaunchUsage:'The 50% launch offer applies to fixed subscriptions. Capped usage billing stays at the regular rate.',
+ quoteLaunch:'Show 50% Bangkok launch-partner pricing',quoteLaunchNote:'For the first 100 approved Bangkok partners, while subscribed. Fixed plan subscription only; fees and add-ons are separate.',quoteLaunchDiscount:'Launch partner offer: 50% off plan',quoteLaunchUsage:'The 50% launch offer applies to fixed subscriptions. Capped usage billing stays at the regular rate.',
  growthLoc:'1 branch included · extra branches ฿295/month with the offer (regular ฿590)',growthExtra:'Launch offer: additional branches ฿295/month each (regular ฿590)',
  pilotPrice:'Bangkok launch partners: plans from ฿495/month (regular ฿990). First 100 only; 50% off while subscribed. Payment and delivery fees are separate.',
  quoteEnterpriseNote:'Enterprise is quoted to your needs. Approved Bangkok launch partners receive 50% off the quoted plan subscription while subscribed; other charges are separate.'
@@ -466,7 +466,7 @@ Object.assign(thai,{
  launchBody:'ร่วมเป็น 100 พาร์ทเนอร์แรกในกรุงเทพฯ พร้อมแบ่งปันความคิดเห็นตามจริงและประสบการณ์ใช้ DotDash รับส่วนลดค่าแพ็กเกจ 50% ต่อเนื่องตราบใดที่ยังสมัครใช้บริการ',
  launchTerms:'ใช้กับค่าแพ็กเกจแบบปกติเท่านั้น ไม่รวมส่วนเสริม ค่าติดตั้ง ค่าชำระเงิน ค่าจัดส่ง และค่าธรรมเนียม Marketplace ส่วนลดนี้ใช้แทนส่วนลดแพ็กเกจรายปี 10% ทีมงานยืนยันสิทธิ์ก่อนสมัคร หน้านี้ไม่ใช่การจองสิทธิ์',
  launchCta:'สมัครเป็นพาร์ทเนอร์เปิดตัว',regularPrice:'ราคาปกติ /เดือน',launchPriceLabel:'สำหรับพาร์ทเนอร์กรุงเทพฯ ที่ได้รับสิทธิ์',enterpriseLaunch:'ลด 50% จากค่าแพ็กเกจตามใบเสนอราคา',
- quoteLaunch:'แสดงราคาโปรพาร์ทเนอร์กรุงเทพฯ ลด 50%',quoteLaunchNote:'สำหรับ 100 พาร์ทเนอร์แรกในกรุงเทพฯ ที่ได้รับสิทธิ์ ตลอดที่สมัครใช้บริการ ลดเฉพาะค่าแพ็กเกจแบบปกติ ส่วนเสริมและค่าธรรมเนียมคิดแยก',quoteLaunchDiscount:'โปรพาร์ทเนอร์กรุงเทพฯ: ลดค่าแพ็กเกจ 50%',quoteLaunchUsage:'โปรลด 50% ใช้กับแพ็กเกจแบบปกติเท่านั้น แบบจ่ายตามยอดออนไลน์ยังใช้อัตราปกติ',
+ quoteLaunch:'แสดงราคาโปรพาร์ทเนอร์กรุงเทพฯ ลด 50%',quoteLaunchNote:'สำหรับ 100 พาร์ทเนอร์แรกในกรุงเทพฯ ที่ได้รับสิทธิ์ ตลอดที่สมัครใช้บริการ ลดเฉพาะค่าแพ็กเกจแบบปกติ ส่วนเสริมและค่าธรรมเนียมคิดแยก',quoteLaunchDiscount:'โปรพาร์ทเนอร์เปิดตัว: ลดค่าแพ็กเกจ 50%',quoteLaunchUsage:'โปรลด 50% ใช้กับแพ็กเกจแบบปกติเท่านั้น แบบจ่ายตามยอดออนไลน์ยังใช้อัตราปกติ',
  growthLoc:'รวม 1 สาขา · สาขาถัดไป ฿295/เดือนเมื่อใช้โปร (ปกติ ฿590)',growthExtra:'โปรเปิดตัว: สาขาถัดไป ฿295/เดือน/สาขา (ปกติ ฿590)',
  pilotPrice:'โปรพาร์ทเนอร์กรุงเทพฯ เริ่ม ฿495/เดือน (ปกติ ฿990) เฉพาะ 100 ร้านแรก ลด 50% ตลอดที่ใช้บริการ ค่าชำระเงินและค่าจัดส่งคิดแยก',
  quoteEnterpriseNote:'Enterprise เสนอราคาตามความต้องการ พาร์ทเนอร์กรุงเทพฯ ที่ได้รับสิทธิ์ลดค่าแพ็กเกจตามใบเสนอราคา 50% ตลอดที่สมัครใช้บริการ ค่าใช้จ่ายอื่นคิดแยก'
