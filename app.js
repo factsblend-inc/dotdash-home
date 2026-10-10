@@ -360,8 +360,11 @@ function computeQuote(o){
  const app=o.app?1490:0, setup=app?25000:0;
  const addons=advanced+pos+app, annual=o.billing==='annual',gp=!annual&&o.mode==='gp';
  const planCharge=gp?Math.min(base,Math.max(0,Number(o.gmv)||0)*.1):base;
- const discount=annual?(base+addons)*.1:0;
- return {plan,branches,base,advanced,pos,app,setup,addons,annual,gp,planCharge,discount,total:planCharge+addons-discount};
+ const launch=Boolean(o.launch)&&!gp;
+ const partnerDiscount=launch?base*.5:0;
+ const annualDiscount=annual?((launch?0:base)+addons)*.1:0;
+ const discount=partnerDiscount+annualDiscount;
+ return {plan,branches,base,advanced,pos,app,setup,addons,annual,gp,planCharge,launch,partnerDiscount,annualDiscount,discount,total:planCharge+addons-discount};
 }
 function phrase(k){return (lang==='th'?thai:english)[k]||k}
 function calculate(){
@@ -388,11 +391,13 @@ function calculate(){
  const pos=get('pos').checked;
  document.getElementById('quote-advanced-options').hidden=!get('advanced').checked;
  document.getElementById('quote-gmv-row').hidden=get('mode').value!=='gp';
- const q=computeQuote({plan:get('plan').value,branches:get('branches').value,billing:get('billing').value,mode:get('mode').value,advanced:get('advanced').checked,seats:get('seats').value,credits:get('credits').value,pos,app:get('app').checked,gmv:gmvRaw});
+ const q=computeQuote({plan:get('plan').value,branches:get('branches').value,billing:get('billing').value,mode:get('mode').value,advanced:get('advanced').checked,seats:get('seats').value,credits:get('credits').value,pos,app:get('app').checked,gmv:gmvRaw,launch:document.getElementById('quote-launch').checked});
  const rows=[[phrase('quoteBase'),q.planCharge]];
  if(q.gp)rows.push([phrase('quoteCap'),q.base]);
  for(const k of ['advanced','pos','app'])if(q[k])rows.push([phrase('quote'+k[0].toUpperCase()+k.slice(1)+'Line'),q[k]]);
- if(q.annual)rows.push([phrase('quoteDiscount'),-q.discount]);
+ if(q.launch)rows.push([phrase('quoteLaunchDiscount'),-q.partnerDiscount]);
+ if(q.annual&&q.annualDiscount)rows.push([phrase('quoteDiscount'),-q.annualDiscount]);
+ if(document.getElementById('quote-launch').checked&&q.gp)notes.push(phrase('quoteLaunchUsage'));
  const box=document.getElementById('quote-breakdown');box.replaceChildren();for(const [name,value]of rows){const row=document.createElement('div'),label=document.createElement('span'),amount=document.createElement('strong');label.textContent=name;amount.textContent=money(value);row.append(label,amount);box.append(row)}
  document.getElementById('quote-total').textContent=q.gp?money(q.addons)+'–'+money(q.base+q.addons):money(q.total);
  document.getElementById('quote-annual').textContent=q.gp?phrase('quoteGpEstimate').replace('{amount}',money(q.total)):q.annual?phrase('quoteAnnualPay')+': '+money(q.total*12):'';
@@ -444,6 +449,29 @@ Object.assign(english,{navMarketplace:"The Network"});
 Object.assign(thai,{navMarketplace:"The Network"});
 Object.assign(english,{marketplaceSoon:"Coming soon Q1’2027"});
 Object.assign(thai,{marketplaceSoon:"เร็วๆ นี้ Q1’2027"});
+
+Object.assign(english,{
+ launchKicker:'Bangkok launch partners · first 100 only',
+ launchTitle:'Help shape DotDash. Keep 50% off your plan.',
+ launchBody:'Join our first 100 Bangkok partners and share honest feedback and your experience using DotDash. Your plan subscription stays 50% off for as long as you remain subscribed.',
+ launchTerms:'Fixed subscriptions only. Add-ons, setup, payment, delivery, and Marketplace fees are separate. The plan offer replaces the 10% annual plan discount. Eligibility is confirmed by our team; this page does not reserve a place.',
+ launchCta:'Apply to become a launch partner',regularPrice:'regular /month',launchPriceLabel:'Eligible Bangkok launch partners',enterpriseLaunch:'50% off the quoted plan subscription',
+ quoteLaunch:'Show 50% Bangkok launch-partner pricing',quoteLaunchNote:'For the first 100 approved Bangkok partners, while subscribed. Fixed plan subscription only; fees and add-ons are separate.',quoteLaunchDiscount:'Bangkok launch offer: 50% off plan',quoteLaunchUsage:'The 50% launch offer applies to fixed subscriptions. Capped usage billing stays at the regular rate.',
+ growthLoc:'1 branch included · extra branches ฿295/month with the offer (regular ฿590)',growthExtra:'Launch offer: additional branches ฿295/month each (regular ฿590)',
+ pilotPrice:'Bangkok launch partners: plans from ฿495/month (regular ฿990). First 100 only; 50% off while subscribed. Payment and delivery fees are separate.',
+ quoteEnterpriseNote:'Enterprise is quoted to your needs. Approved Bangkok launch partners receive 50% off the quoted plan subscription while subscribed; other charges are separate.'
+});
+Object.assign(thai,{
+ launchKicker:'โปรพาร์ทเนอร์เปิดตัวในกรุงเทพฯ · 100 ร้านแรกเท่านั้น',launchTitle:'ช่วยพัฒนา DotDash รับส่วนลดแพ็กเกจ 50% ตลอดที่ใช้บริการ',
+ launchBody:'ร่วมเป็น 100 พาร์ทเนอร์แรกในกรุงเทพฯ พร้อมแบ่งปันความคิดเห็นตามจริงและประสบการณ์ใช้ DotDash รับส่วนลดค่าแพ็กเกจ 50% ต่อเนื่องตราบใดที่ยังสมัครใช้บริการ',
+ launchTerms:'ใช้กับค่าแพ็กเกจแบบปกติเท่านั้น ไม่รวมส่วนเสริม ค่าติดตั้ง ค่าชำระเงิน ค่าจัดส่ง และค่าธรรมเนียม Marketplace ส่วนลดนี้ใช้แทนส่วนลดแพ็กเกจรายปี 10% ทีมงานยืนยันสิทธิ์ก่อนสมัคร หน้านี้ไม่ใช่การจองสิทธิ์',
+ launchCta:'สมัครเป็นพาร์ทเนอร์เปิดตัว',regularPrice:'ราคาปกติ /เดือน',launchPriceLabel:'สำหรับพาร์ทเนอร์กรุงเทพฯ ที่ได้รับสิทธิ์',enterpriseLaunch:'ลด 50% จากค่าแพ็กเกจตามใบเสนอราคา',
+ quoteLaunch:'แสดงราคาโปรพาร์ทเนอร์กรุงเทพฯ ลด 50%',quoteLaunchNote:'สำหรับ 100 พาร์ทเนอร์แรกในกรุงเทพฯ ที่ได้รับสิทธิ์ ตลอดที่สมัครใช้บริการ ลดเฉพาะค่าแพ็กเกจแบบปกติ ส่วนเสริมและค่าธรรมเนียมคิดแยก',quoteLaunchDiscount:'โปรพาร์ทเนอร์กรุงเทพฯ: ลดค่าแพ็กเกจ 50%',quoteLaunchUsage:'โปรลด 50% ใช้กับแพ็กเกจแบบปกติเท่านั้น แบบจ่ายตามยอดออนไลน์ยังใช้อัตราปกติ',
+ growthLoc:'รวม 1 สาขา · สาขาถัดไป ฿295/เดือนเมื่อใช้โปร (ปกติ ฿590)',growthExtra:'โปรเปิดตัว: สาขาถัดไป ฿295/เดือน/สาขา (ปกติ ฿590)',
+ pilotPrice:'โปรพาร์ทเนอร์กรุงเทพฯ เริ่ม ฿495/เดือน (ปกติ ฿990) เฉพาะ 100 ร้านแรก ลด 50% ตลอดที่ใช้บริการ ค่าชำระเงินและค่าจัดส่งคิดแยก',
+ quoteEnterpriseNote:'Enterprise เสนอราคาตามความต้องการ พาร์ทเนอร์กรุงเทพฯ ที่ได้รับสิทธิ์ลดค่าแพ็กเกจตามใบเสนอราคา 50% ตลอดที่สมัครใช้บริการ ค่าใช้จ่ายอื่นคิดแยก'
+});
+
 function translate(){document.documentElement.lang=lang;const copy=lang==='th'?thai:english;document.querySelectorAll('[data-i18n]').forEach(el=>{if(copy[el.dataset.i18n]!==undefined)el.innerHTML=copy[el.dataset.i18n]});document.querySelector('#language').innerHTML=lang==='en'?'<span class="active-language">EN</span><span aria-hidden="true">/</span><span>ไทย</span>':'<span>EN</span><span aria-hidden="true">/</span><span class="active-language">ไทย</span>';document.querySelector('#language').setAttribute('aria-label',lang==='en'?'Switch to Thai':'Switch to English');document.querySelector('nav').setAttribute('aria-label',lang==='th'?'เมนูหลัก':'Main navigation');menu.setAttribute('aria-label',lang==='th'?'เปิดเมนู':'Open menu');document.querySelector('.ordering-reference-image').alt=lang==='th'?'ลูกค้าถือโทรศัพท์ที่แสดงหน้าสั่งอาหารและสะสมแต้มของ SOOD’s บน DotDash':'A customer holding a phone with the SOOD’s DotDash ordering and rewards screen';document.title=lang==='th'?'DotDash — สั่งตรงและเครือข่ายร้านค้า':'DotDash — Direct Ordering & The Network';calculate()}
 document.querySelector('#language').addEventListener('click',()=>{lang=lang==='en'?'th':'en';try{localStorage.setItem('dotdash-language',lang)}catch{}translate()});
 // User-provided booking destination: introduction only, no automatic enrollment.
