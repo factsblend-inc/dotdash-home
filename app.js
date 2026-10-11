@@ -6,7 +6,7 @@ const thai = {
   "aiLabel": "ให้ AI ค้นพบร้านคุณ",
   "aiComing": "วิสัยทัศน์ของเรา · เริ่ม Q1’2027",
   "aiTitle": "ร้านอาหารของคุณ<br>ให้ AI เป็นคนค้นพบ",
-  "aiDesc": "ออเดอร์ถัดไปอาจเริ่มจากบทสนทนา โดยไม่ต้องเปิดแอปมาร์เก็ตเพลส เช่นเดียวกับการถาม AI แทนการค้นหาใน Google ลูกค้าอาจแค่บอกผู้ช่วยส่วนตัวว่าอยากกินอะไร แล้วให้ AI ค้นพบร้านของคุณ เลือกเมนูที่ตรงกับรสนิยมและงบ พร้อมจัดการสั่ง ชำระเงิน และส่งถึงบ้าน",
+  "aiDesc": "แนวคิดในอนาคตของเราคือให้ลูกค้าค้นพบร้านอาหารผ่านการสนทนากับผู้ช่วย AI เราวางแผนศึกษาการแนะนำเมนูและการสั่งตรง โดยขึ้นอยู่กับการรองรับของผู้ให้บริการและการพัฒนาในอนาคต",
   "aiExample": "บอกครั้งเดียว อาหารมาถึงบ้าน",
   "aiAskLabel": "ลูกค้าบอกผู้ช่วย AI",
   "aiRequest": "“หามื้อกลางวันที่ฉันน่าจะชอบ งบไม่เกิน ฿200 แล้วส่งมาให้ฉัน”",
@@ -455,6 +455,7 @@ Object.assign(thai,{
  quoteEnterpriseNote:'Enterprise เสนอราคาตามความต้องการ พาร์ทเนอร์กรุงเทพฯ ที่ได้รับสิทธิ์ลดค่าแพ็กเกจตามใบเสนอราคา 50% ตลอดที่สมัครใช้บริการ ค่าใช้จ่ายอื่นคิดแยก'
 });
 
+Object.assign(thai,{aiDisclosure:'แนวคิดที่ DotDash วางแผนพัฒนา ยังไม่ใช่บริการสั่งอาหารที่เปิดใช้งาน และยังไม่มีการยืนยันการเชื่อมต่อกับผู้ให้บริการ AI รายใด ภาพนี้เป็นภาพจำลองแนวคิด'});
 function translate(){document.documentElement.lang=lang;const copy=lang==='th'?thai:english;document.querySelectorAll('[data-i18n]').forEach(el=>{if(copy[el.dataset.i18n]!==undefined)el.innerHTML=copy[el.dataset.i18n]});document.querySelector('#language').innerHTML=lang==='en'?'<span class="active-language">EN</span><span aria-hidden="true">/</span><span>ไทย</span>':'<span>EN</span><span aria-hidden="true">/</span><span class="active-language">ไทย</span>';document.querySelector('#language').setAttribute('aria-label',lang==='en'?'Switch to Thai':'Switch to English');document.querySelector('nav').setAttribute('aria-label',lang==='th'?'เมนูหลัก':'Main navigation');menu.setAttribute('aria-label',lang==='th'?'เปิดเมนู':'Open menu');document.querySelector('.ordering-reference-image').alt=lang==='th'?'ลูกค้าถือโทรศัพท์ที่แสดงหน้าสั่งอาหารและสะสมแต้มของ SOOD’s บน DotDash':'A customer holding a phone with the SOOD’s DotDash ordering and rewards screen';document.title=lang==='th'?'DotDash — สั่งตรงและเครือข่ายร้านค้า':'DotDash — Direct Ordering & The Network';calculate()}
 document.querySelector('#language').addEventListener('click',()=>{lang=lang==='en'?'th':'en';try{localStorage.setItem('dotdash-language',lang)}catch{}translate()});
 // User-provided booking destination: introduction only, no automatic enrollment.
