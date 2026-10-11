@@ -143,7 +143,7 @@ const thai = {
   "ownFleet": "Own Fleet",
   "currentRates": "<strong>ค่าชำระเงินคิดแยก:</strong> เริ่ม 0.35%+ ต่อบิล กรุณายืนยันอัตราของแต่ละวิธีกับทีมงาน",
   "annualRates": "รายปีลด 10% จากค่าบริการประจำราคาปกติ โปรพาร์ทเนอร์เปิดตัวใช้แทนส่วนลดรายปีของค่าแพ็กเกจ ไม่รวมค่าติดตั้งแอปและค่าชำระเงิน",
-  "rateSource": "ราคาอัปเดตกันยายน 2569 · หน่วยเป็นบาท · <a class=\"text-link\" href=\"https://factsblend-inc.github.io/dotdash-pricing/\" target=\"_blank\" rel=\"noopener\">ดูหน้าราคาที่เผยแพร่</a>",
+  "rateSource": "ราคาอัปเดตกันยายน 2569 · หน่วยเป็นบาท",
   "planComparison": "เปรียบเทียบฟีเจอร์ทุกแพ็กเกจ",
   "planComparisonHead0": "ความสามารถ",
   "planComparisonHead1": "Entry",
