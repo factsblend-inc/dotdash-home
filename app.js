@@ -1,4 +1,7 @@
 'use strict';
+// Pricing is opt-in for shared links; keep it hidden until this check runs.
+const showPricing = new URLSearchParams(window.location.search).has('show_pricing');
+document.querySelectorAll('[data-pricing-only]').forEach(element => { element.hidden = !showPricing; });
 const english = Object.fromEntries([...document.querySelectorAll('[data-i18n]')].map(el => [el.dataset.i18n, el.innerHTML]));
 const thai = {
   "aiDelivery": "จากคำขอเดียวถึงประตูบ้าน ไม่ต้องกดอะไรต่อ",
